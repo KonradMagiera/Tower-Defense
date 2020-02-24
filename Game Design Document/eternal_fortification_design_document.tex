@@ -1,0 +1,52 @@
+\documentclass[a4paper,12pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\usepackage{geometry}
+\newgeometry{hmargin={25mm,25mm}, vmargin={30mm, 30mm}}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\renewcommand{\thesection}{\arabic{section}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\rightmark}
+\fancyhead[L]{IP Managment Studio}
+\fancyfoot[RO, LE]{Strona \thepage \hspace{1pt} z \pageref{LastPage}}
+
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\figurename}{Rysunek} 
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\title{\textbf{Mortal Evolution}}
+\author{Konrad Magiera}
+\date{TMP}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+\section{Opis projektu}
+
+
+\newpage
+\section{Technologia i wzorce projektowe}
+
+ 
+\end{document}
+
