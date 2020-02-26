@@ -12,9 +12,6 @@ public class Bullet : MonoBehaviour
         this.bulletSpeed = bulletSpeed;
     }
 
-
-
-    
     void Update()
     {
         if(target == null){

@@ -2,14 +2,18 @@
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Header("Settings")]
     public float speed = 10f;
+    public float distanceTravelled = 0f;
 
     private Transform target;
     private int currentWaypointIndex = 0;
+    private Vector3 lastPosition;
 
     void Start()
     {
         target = Path.enemyPath[currentWaypointIndex];
+        lastPosition = transform.position;
     }
 
     void Update()
@@ -26,6 +30,9 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 direction = target.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
+
+        distanceTravelled += Vector3.Distance(transform.position, lastPosition);
+        lastPosition = transform.position;
     }
 
     void NextWaypoint()

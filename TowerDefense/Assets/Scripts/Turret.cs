@@ -79,7 +79,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    void FurthestEnemy(GameObject[] enemies)
+    void FurthestEnemy(GameObject[] enemies) // always change to furhtes enemy in range
     {
         float furhtestDistance = -1f;
         GameObject furthestEnemy = null;
@@ -104,8 +104,53 @@ public class Turret : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Choose enemy target that travelled the most distance.
+    /// <param name="enemies">
+    /// Array of GameObjects with tag "Enemy"
+    /// </param>
+    /// <remarks>
+    /// Changes target even if previous enemy is still alive.
+    /// </remarks>
+    /// </summary>
     void FirstEnemy(GameObject[] enemies)
     {
+        // find enemies in range
+        List<GameObject> enemiesInRange = new List<GameObject>();
+        foreach (GameObject e in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, e.transform.position);
+            if (dist <= range)
+            {
+                enemiesInRange.Add(e);
+            }
+        }
+
+        // if no enemies return
+        int inRangeCount = enemiesInRange.Count;
+        if (inRangeCount <= 0)
+        {
+            target = null;
+            return;
+        }
+
+        int firstEnemyIndex = 0;
+        EnemyMovement firstEnemyStats = enemiesInRange[0].GetComponent<EnemyMovement>();
+
+        // compare distanceTravelled
+        for (int i = 1; i < inRangeCount; i++)
+        {
+            EnemyMovement enemyMovementStats = enemiesInRange[i].GetComponent<EnemyMovement>();
+
+            if (firstEnemyStats.distanceTravelled < enemyMovementStats.distanceTravelled)
+            {
+                firstEnemyIndex = i;
+                firstEnemyStats = enemyMovementStats;
+            }
+        }
+
+        // set turret's target
+        target = enemiesInRange[firstEnemyIndex].transform;
 
     }
 
@@ -123,11 +168,13 @@ public class Turret : MonoBehaviour
             {
                 target = null;
             }
-            else
+            else // dont lose aim
             {
                 return;
             }
         }
+
+        // if no target or target out of range
         List<GameObject> enemiesInRange = new List<GameObject>();
         foreach (GameObject e in enemies)
         {
@@ -137,14 +184,14 @@ public class Turret : MonoBehaviour
                 enemiesInRange.Add(e);
             }
         }
-        int inRange = enemiesInRange.Count;
-        if (inRange <= 0)
+        int inRangeCount = enemiesInRange.Count;
+        if (inRangeCount <= 0)
         {
             target = null;
             return;
         }
         System.Random random = new System.Random();
-        target = enemiesInRange[random.Next(0, inRange)].transform;
+        target = enemiesInRange[random.Next(0, inRangeCount)].transform;
     }
 
     void Update()
@@ -174,7 +221,7 @@ public class Turret : MonoBehaviour
             Vector3 barrelDir = (target.position - transform.position).normalized;
             float dot = Vector3.Dot(turretDir, barrelDir); // Dot Product of 2 Vectors <-1, 1>; 1 if facing
 
-            if (dot > 0.8f)
+            if (dot > 0.96f)
             {
                 Shoot();
                 attackCountdown = attackSpeed;
