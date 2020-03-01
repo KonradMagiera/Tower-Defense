@@ -1,7 +1,7 @@
 public enum SeekType
 {
     ClosestEnemy,
-    FurthestEnemy,
+    FarthestEnemy,
     FirstEnemy,
     LastEnemy,
     RandomEnemy
