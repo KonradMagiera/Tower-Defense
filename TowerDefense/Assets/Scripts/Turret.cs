@@ -5,8 +5,8 @@ public class Turret : MonoBehaviour
 {
     [Header("Statistics")]
     public float range = 10f;
-    public uint damage = 1;
-    public uint corruption = 0;
+    public float damage = 1f;
+    public float corruption = 0f;
     public float turnRate = 5f;
     public float attackSpeed = 2f;
     public float bulletSpeed = 50f;
@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
 
     [Header("Setup")]
     public GameObject bulletPrefab;
-    public Transform barrel;
+    public Transform bulletSpawnPoint;
     private Transform target;
 
     private float attackCountdown;
@@ -315,9 +315,9 @@ public class Turret : MonoBehaviour
     void Shoot()
     {
         // TODO shoot particles
-        GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, barrel.position, barrel.rotation);
+        GameObject bulletObject = (GameObject)Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
-        bullet.setBullet(target, bulletSpeed);
+        bullet.setBullet(target, bulletSpeed, damage, corruption);
     }
 
     void OnDrawGizmosSelected()

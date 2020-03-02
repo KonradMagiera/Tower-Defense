@@ -47,20 +47,9 @@ public class WaveSpawner : MonoBehaviour
                 yield return new WaitForSeconds(1f / s.spawnRate);
             }
         }
-      //  for (int i = 0; i < currentWave; i++)
-      //  {
-      //      SpawnEnemy();
-      //     yield return new WaitForSeconds(0.75f);
-      //  }
+
         currentWave++;
     }
-
-    // void SpawnEnemy()
-    // {
-    //     GameObject enemyObject = (GameObject)Instantiate(enemyPrefab, transform.position, transform.rotation);
-    //     EnemyMovement enemy = enemyObject.GetComponent<EnemyMovement>();
-    //     enemy.SetPath(enemyPath);
-    // }
 
     void SpawnEnemy(GameObject enemy)
     {

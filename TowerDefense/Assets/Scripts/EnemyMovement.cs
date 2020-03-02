@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
-        
+
         MoveObject();
 
         if (Vector3.Distance(target.position, transform.position) <= 0.3f)
@@ -31,7 +31,10 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    void MoveObject()
+    /// <summary>
+    /// Transform enemy's position.
+    /// </summary>
+    private void MoveObject()
     {
         Vector3 direction = target.position - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
@@ -40,17 +43,38 @@ public class EnemyMovement : MonoBehaviour
         lastPosition = transform.position;
     }
 
-    void NextWaypoint()
+    /// <summary>
+    /// Select next waypoint.
+    /// </summary>
+    private void NextWaypoint()
     {
         if (currentWaypointIndex >= path.Length - 1)
         {
-            Destroy(gameObject);
+            DealDamage();
             return;
         }
 
         target = path[++currentWaypointIndex];
     }
 
+    /// <summary>
+    /// Deal damage to a player.
+    /// </summary>
+    private void DealDamage()
+    {
+        // TODO damage to player
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Set enemy's movement path.
+    /// <param name="path">
+    /// waypoints connected to the enemie's base.
+    /// </param>
+    /// <remarks>
+    /// Each enemy spawner has it's own path.
+    /// </remarks>
+    /// </summary>
     public void SetPath(Transform[] path)
     {
         this.path = path;
