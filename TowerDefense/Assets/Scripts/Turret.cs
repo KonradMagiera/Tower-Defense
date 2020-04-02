@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     public float turnRate = 5f;
     public float attackSpeed = 2f;
     public float bulletSpeed = 50f;
+    public float price = 6f;
     public SeekType seekType = SeekType.ClosestEnemy;
 
     [Header("Setup")]

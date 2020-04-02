@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        // TODO reward player
+        Player.playerMoney += killingReward;
         Destroy(gameObject);
     }
 }

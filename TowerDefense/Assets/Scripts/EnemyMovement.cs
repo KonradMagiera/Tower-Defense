@@ -5,6 +5,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Settings")]
     public float speed = 10f;
     public float distanceTravelled = 0f;
+    public float damageToPlayer = 1f;
 
     private Transform[] path;
     private Transform target;
@@ -62,7 +63,7 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     private void DealDamage()
     {
-        // TODO damage to player
+        Player.playerHealth -= damageToPlayer;
         Destroy(gameObject);
     }
 
