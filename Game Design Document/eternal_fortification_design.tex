@@ -83,6 +83,7 @@ Do stworzenia gry użyty zostanie silnik Unity3D oraz język C\#. Modele przygot
 \newpage
 \section{Fabuła}
 \subsection{hm}
+
 \newpage
 \section{Rozgrywka}
 \subsection{Cel gry}
@@ -120,16 +121,66 @@ Gracz z każdym zwycięstwem odblokowuje kolejne poziomy. W szczególnym przypad
 \end{longtable}
 \end{center}
 
+\subsubsection{Statystyki}
+\begin{center}
+\begin{longtable}{| p{.50\textwidth} | p{.50\textwidth} |} 
+	\hline
+	Health
+	& Liczba punktów życia. Po utracie wszystkich punktów życia gracz przegrywa \\
+	\hline
+	Money
+	& Złoto, które w danej chwili posiada użytkownik \\ 
+	\hline 
+
+	\caption{Statystyki gracza}	
+\end{longtable}
+\end{center}
+
 \subsubsection{Interfejs użytkownika}
-\subsubsection{Interakcje}
+
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=12cm]{import/UI_Game.pdf}
+	\end{center}
+	\caption{UI w trakcje rozgrywki}
+\end{figure}
+
+Użytkownik z w trakcie rozgrywki widzi powyższy interfejs. W lewym dolnym rogu jest umieszczony pasek stanu życia gracza. Na prawo od tego elementu znajduje się wskaźnik czasu oraz przycisk zatrzymania rozgrywki w celu rozbudowy obrony. Przy wskaźniku czasu pojawia się liczba złota, którą otrzyma użytkownik gdy wymusi następną falę przeciwników. W tym celu należy nacisnąć na zegar. Nad paskiem życia znajduje się ilość złota jaką gracz aktualnie dysponuje.\\
+Wyżej jest panel z dostępnymi wieżyczkami. Po wybraniu wieży z boku pojawia się panel z jej statystykami. W tym samym panelu widoczne są również statystyki wybranej wieży z pola bitwy. Taką wieżę można sprzedać i odzyskać część złota lub ulepszyć za pewną opłatą.
+
+\subsubsection{Interakcje ???}
 \subsection{Przeciwnicy}
 \subsubsection{Poruszanie}
+Przeciwnicy poruszają się według wyznaczonej ścieżki na zasadzie punktów kontrolnych. Każdy typ przeciwnika ma swoją prędkość poruszania. W trakcie rozgrywki ta wartość może być modyfikowana przez efekty działania wież obronnych lub innych unikalnych przeciwników.
 \subsubsection{Statystyki}
-\subsubsection{Okresy historyczne}
-\subsection{Obrona}
+\begin{center}
+\begin{longtable}{| p{.50\textwidth} | p{.50\textwidth} |} 
+	\hline
+	Health
+	& Liczba punktów życia. Po utracie wszystkich punktów życuia przeciwnik ginie, a gracz otrzymuje złoto \\
+	\hline
+	Damage
+	& Obrażenia jakie zostaną zadane graczowi, gdy przeciwnik dotrze do celu \\ 
+	\hline 
+	Defense
+	& Odporność na obrażenia uwzględniana podczas obliczania obrażeń od wież \\ 
+	\hline
+	MovementSpeed
+	& Szybkość poruszania się przeciwnika \\ 
+	\hline
+	GoldReward
+	& Kwota otrzymywana po pokonaniu przeciwnika \\ 
+	\hline
+
+	\caption{Statystyki przeciwników}	
+\end{longtable}
+\end{center}
+
+\subsubsection{Rodzaje przeciwników}
+\subsection{Wieże}
 \subsubsection{System celowania}
 \subsubsection{Statystyki}
-\subsubsection{Okresy historyczne}
+\subsubsection{Rodzaje wież}
  
 \newpage
 \section{Potrzebne materiały}
