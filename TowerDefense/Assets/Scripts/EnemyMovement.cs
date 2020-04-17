@@ -6,15 +6,22 @@ public class EnemyMovement : MonoBehaviour
     public float speed = 10f;
     public float distanceTravelled = 0f;
     public float damageToPlayer = 1f;
+    public float rotationSpeed = 10f;
+    public float animationSpeed = 1.5f;
+    public Animator animator;
 
     private Transform[] path;
     private Transform target;
     private int currentWaypointIndex = 0;
     private Vector3 lastPosition;
 
+
     void Start()
     {
         lastPosition = transform.position;
+
+        // change walking animation speed for enemies with different movement speed
+        animator.SetFloat("walkSpeedMultiplier", animationSpeed);
     }
 
     void Update()
@@ -33,7 +40,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Transform enemy's position.
+    /// Transform and rotate enemy.
     /// </summary>
     private void MoveObject()
     {
@@ -42,6 +49,12 @@ public class EnemyMovement : MonoBehaviour
 
         distanceTravelled += Vector3.Distance(transform.position, lastPosition);
         lastPosition = transform.position;
+
+        // rotate to face target
+         Vector3 dir = target.position - transform.position;
+         Quaternion rot = Quaternion.LookRotation(dir);
+         Vector3 rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed).eulerAngles;
+         transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     /// <summary>

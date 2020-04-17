@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    //public GameObject enemyPrefab;
     public float nextWaveTimer = 10f;
     public Wave[] waves;
 

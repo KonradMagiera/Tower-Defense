@@ -6,6 +6,9 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
+  - first:
+      74: 2667949614841947897
+    second: Walk
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Scene
+      name: Walk
       takeName: Scene
       internalID: 0
       firstFrame: 1
