@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingSpot : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class BuildingSpot : MonoBehaviour
 
     void OnMouseEnter()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         rendererObj.material.color = hoverColor;
     }
 
@@ -30,6 +36,10 @@ public class BuildingSpot : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         if (placedTurret != null)
         {
             return;
@@ -43,7 +53,7 @@ public class BuildingSpot : MonoBehaviour
             Debug.Log("Not enough money");
             return;
         }
-        
+
         Player.playerMoney -= stats.price;
         placedTurret = (GameObject)Instantiate(turret, transform.position + transformY, transform.rotation);
     }
