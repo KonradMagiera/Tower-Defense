@@ -34,7 +34,7 @@
 \renewcommand{\figurename}{Rysunek} 
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
 
-\title{\Huge{\textbf{Eternal Fortification}}\\ \Large{Projekt gry}\\ \large{Wersja 0.1}}
+\title{\Huge{\textbf{Eternal Fortification}}\\ \Large{Projekt gry}\\ \large{Wersja 1.0}}
 \author{Konrad Magiera}
 \date{\today}
 
@@ -76,13 +76,9 @@ Do stworzenia gry użyty zostanie silnik Unity3D oraz język C\#. Modele przygot
 \begin{itemize}
 	\item System operacyjny: Windows 7/8.1.10,
 	\item 1GB wolnego miejsca na dysku,
-	\item 2GB RAM
+	\item 1GB RAM
 \end{itemize}
 
-
-\newpage
-\section{Fabuła}
-\subsection{hm}
 
 \newpage
 \section{Rozgrywka}
@@ -90,8 +86,13 @@ Do stworzenia gry użyty zostanie silnik Unity3D oraz język C\#. Modele przygot
 Gracz na każdym poziomie musi bronić się przed falami przeciwników. Warunkiem zwycięstwa jest przetrwanie określonej liczby fal dla danego poziomu. Liczba fal będzie różnić się pomiędzy poziomami podczas postępu w grze. Gracz przegrywa dany poziom gdy straci całe życia. Życia traci się gdy przeciwnicy dotrą do końca planszy.
 
 \subsection{Tryb gry}
+
 \subsubsection{Kampania}
 Gracz z każdym zwycięstwem odblokowuje kolejne poziomy. W szczególnym przypadku odblokowana zostaje kolejna epoka, jeżeli wszystkie poziomy z danego okresu historycznego zostały ukończone. Kampania przenosi gracza w czasie, odkrywając kolejne okresy.
+
+\subsection{Własny}
+W tym trybie gracz buduje własne pole gry. Oprócz tego będzie możliwy wybór epoki osobno dla wież oraz przeciwników. Ten tryb zostanie odblokowany po przejściu pierwszej epoki w trybie kampania.
+
 
 \subsection{Gracz}
 \subsubsection{Sterowanie}
@@ -147,8 +148,17 @@ Gracz z każdym zwycięstwem odblokowuje kolejne poziomy. W szczególnym przypad
 
 Użytkownik z w trakcie rozgrywki widzi powyższy interfejs. W lewym dolnym rogu jest umieszczony pasek stanu życia gracza. Na prawo od tego elementu znajduje się wskaźnik czasu oraz przycisk zatrzymania rozgrywki w celu rozbudowy obrony. Przy wskaźniku czasu pojawia się liczba złota, którą otrzyma użytkownik gdy wymusi następną falę przeciwników. W tym celu należy nacisnąć na zegar. Nad paskiem życia znajduje się ilość złota jaką gracz aktualnie dysponuje.\\
 Wyżej jest panel z dostępnymi wieżyczkami. Po wybraniu wieży z boku pojawia się panel z jej statystykami. W tym samym panelu widoczne są również statystyki wybranej wieży z pola bitwy. Taką wieżę można sprzedać i odzyskać część złota lub ulepszyć za pewną opłatą.
+\newpage
+\begin{figure}[!htb]
+	\begin{center}
+		\includegraphics[width=7cm]{import/PauseMenu.pdf}
+	\end{center}
+	\caption{Menu pauzy}
+\end{figure}
 
-\subsubsection{Interakcje ???}
+Za pomocą klawisza ESC lub po naciśnięciu odpowiedniego przycisku w interfejsie użytkownika, gracz może zatrzymać rozgrywkę. Otwiera się wtedy menu, za pomocą którego można powtórzyć poziom, powrócić do menu głównego lub kontynuować grę. Ponowne naciśnięcie ESC wznawia rozgrywkę.
+
+
 \subsection{Przeciwnicy}
 \subsubsection{Poruszanie}
 Przeciwnicy poruszają się według wyznaczonej ścieżki na zasadzie punktów kontrolnych. Każdy typ przeciwnika ma swoją prędkość poruszania. W trakcie rozgrywki ta wartość może być modyfikowana przez efekty działania wież obronnych lub innych unikalnych przeciwników.
@@ -177,21 +187,307 @@ Przeciwnicy poruszają się według wyznaczonej ścieżki na zasadzie punktów k
 \end{center}
 
 \subsubsection{Rodzaje przeciwników}
+\begin{enumerate}
+	\item Prehistoria
+	\begin{itemize}
+		\item Nieuzbrojony -- model postaci nie posiada żadnej broni, ubrany w prosty strój ze skóry.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 2 \\
+			\hline
+			Damage & 1 \\ 
+			\hline 
+			Defense & 0 \\ 
+			\hline
+			MovementSpeed & 5 \\ 
+			\hline
+			GoldReward & 1 \\ 
+			\hline
+		\end{longtable}
+		
+		\item Kamieniarz -- model postaci trzyma w ręku kamień wycięty na kształt noża, ubrany w prosty strój ze skóry, ale chroni większą część ciała niż w przypadku Nieuzbrojonego. Postać jest silniejsza, ale kosztem szybkości ruchu.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 4 \\
+			\hline
+			Damage & 3 \\ 
+			\hline 
+			Defense & 1 \\ 
+			\hline
+			MovementSpeed & 3 \\ 
+			\hline
+			GoldReward & 4 \\ 
+			\hline
+		\end{longtable}
+	
+		\item Procarz -- model postaci trzyma w ręku procę. Postać jest zwinniejsza od pozostałych, dlatego porusza się szybciej, ale łatwiej jest ją pokonać.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 1 \\
+			\hline
+			Damage & 1 \\ 
+			\hline 
+			Defense & 0 \\ 
+			\hline
+			MovementSpeed & 8 \\ 
+			\hline
+			GoldReward & 1 \\ 
+			\hline
+		\end{longtable}
+		
+	\end{itemize}
+	
+	\item Starożytność
+	\begin{itemize} 
+		\item Gladiator -- wojownik wyposażony w miecz i lekką zbroję.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 5 \\
+			\hline
+			Damage & 1 \\ 
+			\hline 
+			Defense & 0 \\ 
+			\hline
+			MovementSpeed & 6 \\ 
+			\hline
+			GoldReward & 4 \\ 
+			\hline
+		\end{longtable}
+		
+		\item Legionista -- postać wyposażona w miecz i prostokątną tarczę w pełnym pancerzu.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 7 \\
+			\hline
+			Damage & 3 \\ 
+			\hline 
+			Defense & 2 \\ 
+			\hline
+			MovementSpeed & 3 \\ 
+			\hline
+			GoldReward & 7 \\ 
+			\hline
+		\end{longtable}
+		
+		\item Rydwan -- pojazd ciągnięty przez konia. Jest szybki, ale można go łatwiej pokonać, ponieważ zarówno jeździeć jak i koń są narażeni na ataki.
+		\begin{longtable}[l]{|c|c|} 
+			\hline
+			Health & 7 \\
+			\hline
+			Damage & 2 \\ 
+			\hline 
+			Defense & 1 \\ 
+			\hline
+			MovementSpeed & 11 \\ 
+			\hline
+			GoldReward & 9 \\ 
+			\hline
+		\end{longtable}
+	\end{itemize}
+	
+	\item Średniowiecze
+	\begin{itemize}
+		\item Kmieć
+		
+		\item Rycerz
+	
+		\item Kawalerzysta
+	\end{itemize}
+\end{enumerate}
+
 \subsection{Wieże}
+Podstawowym elementem obrony gracza będą wieże umieszczane na wyznaczonych miejsca. Każda epoka historyczna ma unikatowe sposoby obrony. Wraz z postępem trybu kampanii, gracz będzie odblokowywał kolejne wieże.
+
 \subsubsection{System celowania}
+Gracz będzie miał możliwość wyboru systemu celowania, z którego w danej chwili ma korzystać każda wieża. Do wyboru będzie kilka opcji:
+\begin{enumerate}
+	\item Najbardziej oddalony cel -- obliczany jest dystans do każdego przeciwnika w zasięgi od wieży i wybierany jest najbardziej oddalony,
+	\item Najbliższy cel -- obliczany jest dystans do każdego przeciwnika w zasięgu 
+	\item Cel, który jest najbliżej bazy -- wybierany jest przeciwnik, który przebył największą odległość i jest w zasięgu strzału,
+	\item Cel, który jest najdalej od bazy -- wybierany jest przeciwnik, który przebył najmnejszą odległość i jest w zasięgu strzału
+	\item Losowy cel -- spośród przeciwników w zasięgu jest losowany jeden, który będzie atakowany. To jedyny tryb szukania przeciwników, który nie zmienia celu dopóki obecny cel wciąż żyje i jest w zasięgu.
+\end{enumerate}
+
 \subsubsection{Statystyki}
+
+\begin{center}
+\begin{longtable}{| p{.50\textwidth} | p{.50\textwidth} |} 
+	\hline
+	Range
+	& Zasięg ataku wieży \\
+	\hline
+	Damage
+	& Obrażenia, które otrzyma przeciwnik (zostaną zredukowane przez odporność przeciwnika) \\ 
+	\hline 
+	Corruption
+	& Niszczenie pancerza, powoduje zmniejszenie odporności przeciwników \\ 
+	\hline
+	TurnRate
+	& Szybkość obrotu \\ 
+	\hline
+	AttackSpeed
+	& Częstotliwość ataków, szybkość ataku \\ 
+	\hline
+	BulletSpeed
+	& Szybkość lotu pocisku \\ 
+	\hline
+
+	\caption{Statystyki wież}	
+\end{longtable}
+\end{center}
+
 \subsubsection{Rodzaje wież}
+\begin{enumerate}
+	\item Prehistoria
+	\begin{itemize}
+		\item Kamieniarz -- postać rzuca kamieniami znalezionymi na ziemi.
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 10 \\
+		\hline
+		Damage & 1 \\ 
+		\hline 
+		Corruption & 0 \\ 
+		\hline
+		TurnRate & 20 \\ 
+		\hline
+		AttackSpeed & 10 \\ 
+		\hline
+		BulletSpeed & 25 \\ 
+		\hline
+		\end{longtable}
+
+		\item Procarz -- postać trzyma w ręku procę.
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 15 \\
+		\hline
+		Damage & 2 \\ 
+		\hline 
+		Corruption & 0 \\ 
+		\hline
+		TurnRate & 20 \\ 
+		\hline
+		AttackSpeed & 7 \\ 
+		\hline
+		BulletSpeed & 40 \\ 
+		\hline
+		\end{longtable}		
+		
+		\item Włócznik -- postać rzuca naostrzonymi patykami
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 8 \\
+		\hline
+		Damage & 2 \\ 
+		\hline 
+		Corruption & 1 \\ 
+		\hline
+		TurnRate & 15 \\ 
+		\hline
+		AttackSpeed & 4 \\ 
+		\hline
+		BulletSpeed & 30 \\ 
+		\hline
+		\end{longtable}	
+	\end{itemize}
+	
+	\item Starożytność
+	\begin{itemize}
+		\item Rzucający nożem
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 12 \\
+		\hline
+		Damage & 3 \\ 
+		\hline 
+		Corruption & 0 \\ 
+		\hline
+		TurnRate & 25 \\ 
+		\hline
+		AttackSpeed & 8 \\ 
+		\hline
+		BulletSpeed & 25 \\ 
+		\hline
+		\end{longtable}	
+		
+		\item Włócznik
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 10 \\
+		\hline
+		Damage & 4 \\ 
+		\hline 
+		Corruption & 1 \\ 
+		\hline
+		TurnRate & 12 \\ 
+		\hline
+		AttackSpeed & 4 \\ 
+		\hline
+		BulletSpeed & 30 \\ 
+		\hline
+		\end{longtable}	
+		\item Łucznik
+		
+	\end{itemize}
+
+	\item Średniowiecze
+	\begin{itemize}
+		\item Łucznik
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 12 \\
+		\hline
+		Damage & 3 \\ 
+		\hline 
+		Corruption & 0 \\ 
+		\hline
+		TurnRate & 18 \\ 
+		\hline
+		AttackSpeed & 10 \\ 
+		\hline
+		BulletSpeed & 30 \\ 
+		\hline
+		\end{longtable}	
+		
+		\item Kusznik
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 20 \\
+		\hline
+		Damage & 4 \\ 
+		\hline 
+		Corruption & 2 \\ 
+		\hline
+		TurnRate & 15 \\ 
+		\hline
+		AttackSpeed & 5 \\ 
+		\hline
+		BulletSpeed & 50 \\ 
+		\hline
+		\end{longtable}		
+	
+		\item Katapulta
+		\begin{longtable}[l]{|c|c|} 
+		\hline
+		Range & 25 \\
+		\hline
+		Damage & 8 \\ 
+		\hline 
+		Corruption & 0 \\ 
+		\hline
+		TurnRate & 10 \\ 
+		\hline
+		AttackSpeed & 3 \\ 
+		\hline
+		BulletSpeed & 40 \\ 
+		\hline
+		\end{longtable}	
+	\end{itemize}
+	
+\end{enumerate} 
  
-\newpage
-\section{Potrzebne materiały}
-\subsection{Dźwięki}
-\subsection{Modele}
-\subsection{Efekty wizualne}
-\subsection{Kod}
-TMP
-\cite{GDD-stanley}
-
-
+ 
 \newpage
 \section{Bibliografia}
 

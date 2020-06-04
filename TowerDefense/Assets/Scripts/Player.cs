@@ -12,19 +12,21 @@ public class Player : MonoBehaviour
     public float startingMoney = 20f;
 
     public TextMeshProUGUI healthBarText;
+    public TextMeshProUGUI moneyText;
 
     void Awake()
     {
         playerHealth = startingHealth;
         playerMoney = startingMoney;
-        healthBarText.text = startingHealth.ToString();
-        InvokeRepeating("UpdateHealthBar", 3.0f, 0.3f);
+        UpdateStats();
+        InvokeRepeating("UpdateStats", 1.0f, 0.1f);
     }
 
 
-    private void UpdateHealthBar()
+    private void UpdateStats()
     {
         healthBarText.text = playerHealth.ToString();
+        moneyText.text = playerMoney.ToString();
     }
 
 }
