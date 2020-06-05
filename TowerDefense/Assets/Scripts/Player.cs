@@ -7,11 +7,10 @@ public class Player : MonoBehaviour
 {
     public static float playerHealth;
     public static float playerMoney;
-
     public float startingHealth = 30f;
     public float startingMoney = 20f;
-
     public TextMeshProUGUI healthBarText;
+
     public TextMeshProUGUI moneyText;
 
     void Awake()

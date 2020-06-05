@@ -48,9 +48,9 @@ public class BuildingSpot : MonoBehaviour
         GameObject turret = BuildManager.buildManager.GetSelectedTurret();
         Turret stats = turret.GetComponent<Turret>();
 
+        // Not enough money, maybe change gold color for a second
         if (stats.price > Player.playerMoney)
         {
-            Debug.Log("Not enough money");
             return;
         }
 
