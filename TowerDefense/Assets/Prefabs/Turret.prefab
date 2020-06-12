@@ -238,7 +238,8 @@ MonoBehaviour:
   turnRate: 5
   attackSpeed: 2
   bulletSpeed: 20
-  seekType: 0
+  price: 6
+  seekType: 2
   bulletPrefab: {fileID: 5058972438916836609, guid: d584fa4850e3e7641844f9dce21c9cc7,
     type: 3}
   bulletSpawnPoint: {fileID: 4506349590636569624}

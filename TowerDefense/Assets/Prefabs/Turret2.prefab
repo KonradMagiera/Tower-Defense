@@ -114,7 +114,7 @@ MonoBehaviour:
   attackSpeed: 1
   bulletSpeed: 10
   price: 10
-  seekType: 0
+  seekType: 3
   bulletPrefab: {fileID: 5058972438916836609, guid: d584fa4850e3e7641844f9dce21c9cc7,
     type: 3}
   bulletSpawnPoint: {fileID: 5277920948076299727}

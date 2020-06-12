@@ -433,7 +433,7 @@ Gracz będzie miał możliwość wyboru systemu celowania, z którego w danej ch
 
 	\item Średniowiecze
 	\begin{itemize}
-		\item Łucznik
+		\item Łucznik -- postać wyposażona w łuk, na plecach ma założony kołczan
 		\begin{longtable}[l]{|c|c|} 
 		\hline
 		Range & 12 \\
@@ -487,6 +487,18 @@ Gracz będzie miał możliwość wyboru systemu celowania, z którego w danej ch
 	
 \end{enumerate} 
  
+\section{Wnioski}
+\begin{itemize}
+	\item Projektowanie gier jest wymagającym zadaniem. Projektant musi mieć duże zdolności analityczne, ponieważ dobry projekt powinien być zupełny. Każdy aspekt gry musi być dobrze przemyślany, nie powinny występować elementy rozgrywki, które nie zostały przewidziane. Kolejnym aspektem dotyczącym projektowania jest balansowanie parametrami. W przypadku gry z gatunku "Tower Defense" należy odpowiednio dobrać statystyki przeciwników oraz wież, tak aby gra stanowiła wyzwanie dla gracza i zachęcała do dalszej rozgrywki. Zbyt wysoki lub zbyt niski poziom trudności może zniechęcić gracza.
+	
+	\item Unity3D to środowisko do tworzenia gier, ale również można w nim tworzyć różne animacje czy wizualizacje. Przy pierwszym uruchomieniu wydaje się dość skomplikowane ze względu na dużą liczbę okien. W rzeczywistości stosunkowo szybko można odnaleźć się w interfejsie. Dużą zaletą tego środowiska jest możliwość modyfikowania obiektów i ich parametrów przez zmiany wartości w interfejsie graficznym. Co więcej, każdy obiekt można dowolnie modyfikować poprzez dodanie do niego nowych skryptów -- własnych lub przygotowanych przez twórców. Dzięki temu każdy model może być wykorzystany wielokrotnie,a dostać zmienioną funkcjonalność poprzez podłączenie innych skryptów. Środowisko zapewnia bardzo dużo zróżnicowanych skryptów. Na przykład do paneli w interfejsie graficznym można dodać skrypty, które ustawią elementy potomne jeden pod drugim albo w innym przypadku w układzie siatki.
+	
+	\item Trzeba zwrócić uwagę na fakt, że implementacja gry wymaga umiejętności pracy w kilu dziedzinach. Po pierwsze potrzebne są skrypty, których przygotowanie bez wiedzy programistycznej byłoby bardzo trudne. Kolejny dział informatyki, bez którego tego typu gra nie powstanie to grafika komputerowa. Należy przygotować modele, interfejs graficzny, to są elementy, które są widoczne dla gracza. Skrypty są ukryte przed graczem, widzi je pośrednio przez zachowanie poszczególnych modeli. Warto też wspomnieć o muzyce, która również wpływa na nastawienie gracza. Podsumowując, tworzenie gry przez jedną osobę jest bardzo wymagające, jeżeli chce się zadbać o każdy z wymienionych aspektów.
+	
+	\item Dokumentacja dla Unity3D jest bardzo rozbudowana. Dotyczy to samego środowiska oraz ScriptingAPI. Unity opracowało przyjemną możliwość pisania skryptów. Klasy, które są skryptami rozszerzają interfejs MonoBehaviour. Skrypty mają ustaloną kolejność wykonywania funkcji.  Kiedy na scenie pojawia się obiekt z konkrentym skryptem, to w tym skrypcie wykonuje się w pierwszej kolejności metoda Awake, w której inicjalizuje się parametry, które powinny zostać stworzone w pierwszej kolejności. Na przykład w stworzonej grze w tej metodzie ustalane są kolejne punkty po których poruszają się przeciwnicy, żeby później przekazać ja do elementu, który zarządza pojawianiem się przeciwników. Pozostałe inicjalizacje wykonywane są w metodzie Start. Dzięki temu powstaje swego rodzaju hierarchia wykonywania poszczególnych elementów. Metoda Update służy jako nieskończona pętla, dzięki której obiekt może wykonywać jakieś akcje (na przykład poruszanie się). Ze względu na zmienną liczbę klatek na sekundę w grach, często wykorzystuje się Time.deltaTime, która daje informacje ile czasu upłynęło pomiedzy poszczególnymi klatkami. Pozwala to płynne działanie gry.
+	
+	\item Przechodząc do etapu programowania, tworzenia gry, zdarza się, że pewne pomysły ulegają modyfikacjom, usprawnieniom. Jest to ważny element rozwoju oprogramowania, ponieważ dopiero jak zaczniemy pracę nad projektem, to zaczynamy dostrzegać pewne niedoskonałości, które warto jest poprawić. W przypadku mojego projektu modyfikacjom ulegał system ścieżki poruszania się przeciwników. W początkowej wersji przygotowałem globalną drogę, z której korzystał każdy obiekt tworzący przeciwników (nawet jeżeli znajdowały się w zupełnie innych miejscach na planszy). Zdecydowałem się to zmienić, każdy obiekt pojawiający ma teraz przypisaną własną ścieżkę, dzięki czemu można tworzyć bardziej złożone poziomy. Mimo, że rozwiązanie jest skuteczne, to trzeba każdemu obiektowi wyznaczyć tę ścieżkę, dlatego rozważam przygotowanie dwuwymiarowej przestrzeni, na której ścieżki będą przypominały labirynt, natomiast skrypt zamiast otrzymywać gotową ścieżkę będzie ją wyszukiwał. Zakładam możliwość użycia algorytmu A*, DFS, albo BFS. Stąd wniosek, że oprogramowanie nie jest czymś stałym, niezmiennym. Dobre oprogramowanie to takie, które ciągle się rozwija, usprawnia poszczególne elementy, o ile to możliwe.
+\end{itemize}
  
 \newpage
 \section{Bibliografia}
