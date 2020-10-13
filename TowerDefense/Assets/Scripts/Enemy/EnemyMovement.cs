@@ -10,8 +10,9 @@ public class EnemyMovement : MonoBehaviour
     public float animationSpeed = 1.5f;
     public Animator animator;
 
-    private Transform[] path;
-    private Transform target;
+
+    private Vector3[] path;
+    private Vector3 target;
     private int currentWaypointIndex = 0;
     private Vector3 lastPosition;
 
@@ -33,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
         MoveObject();
 
-        if (Vector3.Distance(target.position, transform.position) <= 0.3f)
+        if (Vector3.Distance(target, transform.position) <= 0.3f)
         {
             NextWaypoint();
         }
@@ -44,14 +45,14 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     private void MoveObject()
     {
-        Vector3 direction = target.position - transform.position;
+        Vector3 direction = target - transform.position;
         transform.Translate(direction.normalized * speed * Time.deltaTime, Space.World);
 
         distanceTravelled += Vector3.Distance(transform.position, lastPosition);
         lastPosition = transform.position;
 
         // rotate to face target
-         Vector3 dir = target.position - transform.position;
+         Vector3 dir = target - transform.position;
          Quaternion rot = Quaternion.LookRotation(dir);
          Vector3 rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed).eulerAngles;
          transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
@@ -76,22 +77,25 @@ public class EnemyMovement : MonoBehaviour
     /// </summary>
     private void DealDamage()
     {
-        Player.playerHealth -= damageToPlayer;
+        Player.playerHealth = Player.playerHealth - damageToPlayer > 0 
+                            ? Player.playerHealth - damageToPlayer 
+                            : 0;
+        
         Destroy(gameObject);
     }
 
     /// <summary>
     /// Set enemy's movement path.
     /// <param name="path">
-    /// waypoints connected to the enemie's base.
+    /// path for enemies.
     /// </param>
     /// <remarks>
-    /// Each enemy spawner has it's own path.
+    /// Each enemy spawner finds it's own path.
     /// </remarks>
     /// </summary>
-    public void SetPath(Transform[] path)
+    public void SetPath(Vector3[] path)
     {
         this.path = path;
-        target = path[currentWaypointIndex];
+        target = this.path[currentWaypointIndex];
     }
 }

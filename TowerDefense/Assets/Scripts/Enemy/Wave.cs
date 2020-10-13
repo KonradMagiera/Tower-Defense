@@ -12,4 +12,9 @@ public class Wave
     }
 
     public EnemySettings[] enemies;
+
+    public Wave(int numberOfEnemyTypes)
+    {
+        enemies = new EnemySettings[numberOfEnemyTypes];
+    }
 }

@@ -33,6 +33,12 @@ public class Player : MonoBehaviour
 
         healthBarText.text = playerHealth.ToString();
         moneyText.text = playerMoney.ToString();
+
+
+        if(playerHealth <= 0)
+        {
+            Debug.Log("GAME OVER");
+        }
     }
 
 }
