@@ -27,10 +27,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (path == null)
-        {
-            return;
-        }
+        if (path == null) return;
 
         MoveObject();
 
