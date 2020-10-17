@@ -15,6 +15,8 @@ public class BoardPane : MonoBehaviour
 
     void OnMouseDown()
     {
+        if(!enabled) return;
+        
         switch(Board.GameBoard[x,y]){
             case 0: // Empty BLACK
                 Board.GameBoard[x,y] = 1;

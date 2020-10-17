@@ -5,9 +5,10 @@ using UnityEngine;
 public class Board : MonoBehaviour
 {
     public static int[,] GameBoard;
+    public  BoardData[] NewGameBoard;
 
     public GameObject[] fieldPrefabs; // 0: EditMode, 1: BuildingSpot, 2: Spawner
-    public GameObject[] enemyPrefabs; // will be used in edit mode
+    //public GameObject[] enemyPrefabs; // will be used in edit mode
     public GameObject emptyBoardObject;
 
     //public GameObject buildingSpotPrefab; // for placing turrets
