@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public static int[,] GameBoard;
-    public  BoardData[] NewGameBoard;
+    public static BoardData[] NewGameBoard;
+    public  BoardData[] InspectorGameBoard;
 
     public GameObject[] fieldPrefabs; // 0: EditMode, 1: BuildingSpot, 2: Spawner
     //public GameObject[] enemyPrefabs; // will be used in edit mode
@@ -18,44 +18,19 @@ public class Board : MonoBehaviour
 
     void Awake()
     {
+        NewGameBoard = InspectorGameBoard;
+
         //case 0: Empty BLACK
         //case 1: Path GREY
         //case 2: Build Spot WHITE
         //case 3: EnemyBase RED
         //case 4: PlayerBase GREEN
 
-        GameBoard = new int[10, 10];
-        GameBoard[0, 4] = 3;
-        GameBoard[9, 4] = 4;
-        GameBoard[8, 4] = 1;
-        GameBoard[7, 4] = 1;
-        GameBoard[6, 4] = 1;
-        GameBoard[5, 4] = 1;
-        GameBoard[4, 4] = 1;
-        GameBoard[3, 4] = 1;
-        GameBoard[3, 5] = 1;
-        GameBoard[3, 6] = 1;
-        GameBoard[2, 6] = 1;
-        GameBoard[1, 6] = 1;
-        GameBoard[1, 5] = 1;
-        GameBoard[1, 3] = 1;
-        GameBoard[2, 3] = 1;
-        GameBoard[3, 3] = 1;
-        GameBoard[1, 4] = 1;
-        GameBoard[2, 4] = 2;
-        GameBoard[4, 5] = 2;
-        GameBoard[5, 5] = 2;
-        GameBoard[6, 5] = 2;
-        GameBoard[7, 5] = 2;
-        GameBoard[8, 5] = 2;
-        GameBoard[9, 5] = 2;
-
-
-        for (int x = 0; x < GameBoard.GetLength(0); x++)
+        for (int x = 0; x < NewGameBoard.GetLength(0); x++)
         {
-            for (int y = 0; y < GameBoard.GetLength(1); y++)
+            for (int y = 0; y < NewGameBoard[x].GetLength(); y++)
             {
-                if (GameBoard[x, y] == 3) // WaveSpawner
+                if (NewGameBoard[x][y] == PaneType.EnemyBase) // WaveSpawner
                 {
                     // place manually in campgain: in custom map will be generated
 
@@ -69,7 +44,7 @@ public class Board : MonoBehaviour
                    // spawner.waves[0].enemies[0].spawnRate = 1;
 
                 }
-                else if (GameBoard[x, y] == 2) // BuildingSpot
+                else if (NewGameBoard[x][y] == PaneType.BuildingSpot) // BuildingSpot
                 {
                     GameObject buildingSpotObject = (GameObject)Instantiate(fieldPrefabs[1], new Vector3(x * size - 5 * size, 0.1f, y * size - 3 * size), Quaternion.identity);
                     buildingSpotObject.transform.parent = emptyBoardObject.transform;

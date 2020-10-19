@@ -19,8 +19,8 @@ public class WaveSpawner : MonoBehaviour
 
     void Start() // change for pathfinding in 2d array (target: A*)
     {
-        if(Board.GameBoard != null)
-            visited = new bool[Board.GameBoard.GetLength(0), Board.GameBoard.GetLength(1)];
+        if(Board.NewGameBoard != null)
+            visited = new bool[Board.NewGameBoard.GetLength(0), Board.NewGameBoard[0].GetLength()];
         path = new List<int>();
 
         SetPostionAndFindPath();
@@ -94,7 +94,7 @@ public class WaveSpawner : MonoBehaviour
     {
         if(!isValid(x,y)) return false;
 
-        if (Board.GameBoard[x, y] == 4) // Playerbase reached
+        if (Board.NewGameBoard[x][y] == PaneType.PlayerBase) // Playerbase reached
         {
             path.Add(x);
             path.Add(y);
@@ -102,7 +102,7 @@ public class WaveSpawner : MonoBehaviour
             return true;
         }
 
-        if (!visited[x, y] && (Board.GameBoard[x,y] == 1 || firstNode))
+        if (!visited[x, y] && (Board.NewGameBoard[x][y] == PaneType.Path || firstNode))
         {
             visited[x, y] = true;
             firstNode = false;
@@ -137,7 +137,7 @@ public class WaveSpawner : MonoBehaviour
     }
 
     private bool isValid(int x, int y){
-        return (x >= 0 && x < Board.GameBoard.GetLength(0) && y >= 0 && y < Board.GameBoard.GetLength(1));
+        return (x >= 0 && x < Board.NewGameBoard.GetLength(0) && y >= 0 && y < Board.NewGameBoard[0].GetLength());
     }
 
 

@@ -17,33 +17,33 @@ public class BoardPane : MonoBehaviour
     {
         if(!enabled) return;
         
-        switch(Board.GameBoard[x,y]){
-            case 0: // Empty BLACK
-                Board.GameBoard[x,y] = 1;
+        switch(Board.NewGameBoard[x][y]){
+            case PaneType.Empty: // Empty BLACK
+                Board.NewGameBoard[x][y] = PaneType.Path;
                 rendererObj.material.color = Color.gray;
                 break;
-            case 1: // Path GREY
-                Board.GameBoard[x,y] = 2;
+            case PaneType.Path: // Path GREY
+                Board.NewGameBoard[x][y] = PaneType.BuildingSpot;
                 rendererObj.material.color = Color.white;
                 break;
-            case 2: // Build Spot WHITE
-                Board.GameBoard[x,y] = 3;
+            case PaneType.BuildingSpot: // Build Spot WHITE
+                Board.NewGameBoard[x][y] = PaneType.EnemyBase;
                 rendererObj.material.color = Color.red;
                 break;
-            case 3: // EnemyBase RED
-                Board.GameBoard[x,y] = 4;
+            case PaneType.EnemyBase: // EnemyBase RED
+                Board.NewGameBoard[x][y] = PaneType.PlayerBase;
                 rendererObj.material.color = Color.green;
                 break;
-            case 4: // PlayerBase GREEN
-                Board.GameBoard[x,y] = 0;
+            case PaneType.PlayerBase: // PlayerBase GREEN
+                Board.NewGameBoard[x][y] = PaneType.Empty;
                 rendererObj.material.color = Color.black;
                 break;
             default:
-                Board.GameBoard[x,y] = 0;
+                Board.NewGameBoard[x][y] = PaneType.Empty;
                 rendererObj.material.color = Color.black;
                 break;
         }
-        Debug.Log(Board.GameBoard[x,y] + $" {x},{y}");
+        Debug.Log(Board.NewGameBoard[x][y] + $" {x},{y}");
     }
 
     public void SetCoordinates(int x, int y){
@@ -54,20 +54,20 @@ public class BoardPane : MonoBehaviour
 
     private void SetColor()
     {
-        switch(Board.GameBoard[x,y]){
-            case 0: // Empty BLACK
+        switch(Board.NewGameBoard[x][y]){
+            case PaneType.Empty: // Empty BLACK
                 rendererObj.material.color = Color.black;
                 break;
-            case 1: // Path GREY
+            case PaneType.Path: // Path GREY
                 rendererObj.material.color = Color.grey;
                 break;
-            case 2: // Build Spot WHITE
+            case PaneType.BuildingSpot: // Build Spot WHITE
                 rendererObj.material.color = Color.white;
                 break;
-            case 3: // EnemyBase RED
+            case PaneType.EnemyBase: // EnemyBase RED
                 rendererObj.material.color = Color.red;
                 break;
-            case 4: // PlayerBase GREEN
+            case PaneType.PlayerBase: // PlayerBase GREEN
                 rendererObj.material.color = Color.green;
                 break;
             default:
