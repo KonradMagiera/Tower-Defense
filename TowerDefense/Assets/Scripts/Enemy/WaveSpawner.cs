@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class WaveSpawner : MonoBehaviour
 {
     //public GameObject enemyPrefab;
-    public float nextWaveTimer = 10f;
+    //public float nextWaveTimer = 10f;
     public Wave[] waves;
     public int PosX, PosY;
 
-    private float countdown = 3f;
+    //private float countdown = 3f;
     private int currentWave = 0;
     private Transform[] enemyPath;
     private bool[,] visited;
@@ -26,17 +26,19 @@ public class WaveSpawner : MonoBehaviour
         SetPostionAndFindPath();
         // Vector3 newPath is set
 
+        if(GameManager.waveCounter < waves.Length) GameManager.waveCounter = waves.Length;
+
     }
 
     void Update()
     {
-        if (countdown <= 0f)
+        if (GameManager.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            countdown = nextWaveTimer;
+            //countdown = nextWaveTimer;
             return;
         }
-        countdown -= Time.deltaTime;
+        //countdown -= Time.deltaTime;
     }
 
     IEnumerator SpawnWave()
@@ -47,8 +49,12 @@ public class WaveSpawner : MonoBehaviour
         }
         Wave current = waves[currentWave];
 
+        //Debug.Log(Player.enemiesAlive);
+        
+
         foreach (Wave.EnemySettings s in current.enemies)
         {
+            GameManager.enemiesAlive += s.amount;
             for (int i = 0; i < s.amount; i++)
             {
                 SpawnEnemy(s.enemyPrefab);

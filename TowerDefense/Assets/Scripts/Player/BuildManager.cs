@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BuildManager : MonoBehaviour
 {
     public static BuildManager buildManager;
+    
     public GameObject turret;
     public Image highlither;
 

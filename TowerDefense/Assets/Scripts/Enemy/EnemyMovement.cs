@@ -77,7 +77,8 @@ public class EnemyMovement : MonoBehaviour
         Player.playerHealth = Player.playerHealth - damageToPlayer > 0 
                             ? Player.playerHealth - damageToPlayer 
                             : 0;
-        
+                            
+        GameManager.enemiesAlive -= 1;
         Destroy(gameObject);
     }
 
