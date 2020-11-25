@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -43,11 +44,14 @@ public class Player : MonoBehaviour
 
         if(playerHealth <= 0)
         {
-            Debug.Log("GAME OVER");
+            GameManager.waveCounter = 1;
+            GameManager.gameManager.GameLost();
+
         }
         else if(GameManager.waveCounter == 0 && GameManager.enemiesAlive == 0)
         {
-            Debug.Log("WIN");
+            GameManager.waveCounter = 1;
+            GameManager.gameManager.GameWon();
         }
     }
 

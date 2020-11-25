@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager gameManager;
     public static int enemiesAlive = 0;
     public static int waveCounter = 1;
     public static float countdown = 3f;
@@ -13,6 +16,18 @@ public class GameManager : MonoBehaviour
     [Header("Time Settings")]
     public float gameStartCountdown = 3f;
     public float timeTospawnNextWave = 10f;
+
+    [Header("UI")]
+    public Image timer;
+    public TextMeshProUGUI timerText;
+    public GameObject gameUI;
+    public GameObject looseScreen;
+    public GameObject winScreen;
+
+     void Awake()
+     {
+         gameManager = this;
+     }
 
     void Start()
     {
@@ -29,16 +44,25 @@ public class GameManager : MonoBehaviour
             return;
         }
         countdown -= Time.deltaTime;
+
+        timer.fillAmount = countdown / nextWaveTimer;
+        timerText.text = ((int)countdown).ToString();
     }
 
     public void GameWon()
     {
-
+        Time.timeScale = 0f;
+        gameUI.SetActive(false);
+        winScreen.SetActive(true);
+        Debug.Log("WIN");
     }
 
     public void GameLost()
     {
-
+        Time.timeScale = 0f;
+        gameUI.SetActive(false);
+        looseScreen.SetActive(true);
+        Debug.Log("GAME OVER");
     }
 
 }
