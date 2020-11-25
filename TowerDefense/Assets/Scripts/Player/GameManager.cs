@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +55,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameUI.SetActive(false);
         winScreen.SetActive(true);
+
+        string nextLevelName = SceneManager.GetActiveScene().name;
+        float levelNumber = float.Parse(nextLevelName.Substring(5).Replace('.',','));
+        levelNumber += 0.1f;
+        nextLevelName = $"Level{levelNumber}".Replace(',','.');
+        PlayerPrefs.SetString("currentLevel", nextLevelName);
+
         Debug.Log("WIN");
     }
 

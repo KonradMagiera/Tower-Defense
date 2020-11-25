@@ -6253,7 +6253,7 @@ PrefabInstance:
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[0].enemies.Array.data[0].amount
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}

@@ -5,15 +5,25 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject startMenu;
     public GameObject levelSelector;
+    public string unlockedLevel = "Level1.1";
 
     public void Start()
     {
+        if(!PlayerPrefs.HasKey("currentLevel")) PlayerPrefs.SetString("currentLevel", unlockedLevel);
         ManageActive(true, false);
     }
 
     public void SelectLevel(string level)
     {
-        SceneManager.LoadScene($"Level{level}", LoadSceneMode.Single);
+        float playerPref = float.Parse(PlayerPrefs.GetString("currentLevel").Substring(5).Replace('.',','));
+        float givenLevel = float.Parse(level.Replace('.', ','));
+        if(playerPref >= givenLevel)
+        {
+            SceneManager.LoadScene($"Level{level}", LoadSceneMode.Single);
+        } else
+        {
+            Debug.Log($"Level locked {level}");
+        }
     }
 
     public void Play()
