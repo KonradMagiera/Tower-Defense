@@ -8,15 +8,11 @@ public class Player : MonoBehaviour
 {
     public static float playerHealth;
     public static float playerMoney;
-    //public static int enemiesAlive = 0;
-    //public static int waveCounter = 1;
 
     [Header("Settings")]
     public float startingHealth = 30f;
     public float startingMoney = 20f;
-    //[Header("Current Wave Tracking")]
-    //public float countdown = 3f;
-    //public float nextWaveTimer = 10f;
+
     [Header("UI Objects")]
     public TextMeshProUGUI healthBarText;
     public TextMeshProUGUI moneyText;

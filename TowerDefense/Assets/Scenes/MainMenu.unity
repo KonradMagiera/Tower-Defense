@@ -343,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -291.49985, y: 241.49985}
+  m_AnchoredPosition: {x: -291.5, y: 241.49995}
   m_SizeDelta: {x: 583, y: 800}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &115788653
@@ -793,6 +793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startMenu: {fileID: 1450328324}
   levelSelector: {fileID: 1736782871}
+  unlockedLevel: Level1.1
 --- !u!1001 &287512415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1688,8 +1689,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1592021232}
   m_HandleRect: {fileID: 1592021231}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999957
+  m_Value: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1940,8 +1941,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1720245431}
   m_HandleRect: {fileID: 1720245430}
   m_Direction: 2
-  m_Value: 1.0000006
-  m_Size: 0.6037474
+  m_Value: 1
+  m_Size: 0.60374993
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2684,7 +2685,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253, y: -280}
+  m_AnchoredPosition: {x: -253, y: -267}
   m_SizeDelta: {x: 83.1, y: 24.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566067267
