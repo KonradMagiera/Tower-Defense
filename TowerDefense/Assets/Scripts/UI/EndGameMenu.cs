@@ -17,13 +17,13 @@ public class EndGameMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
-    public void NextLevel()
+    public void NextLevel(int nextLevelStageID)
     {
         Time.timeScale = 1f;
         string nextLevelName = SceneManager.GetActiveScene().name;
-        float levelNumber = float.Parse(nextLevelName.Substring(5).Replace('.',','));
-        levelNumber += 0.1f;
-        nextLevelName = $"Level{levelNumber}".Replace(',','.');
+        int nextLevelId = int.Parse(nextLevelName.Substring(7));
+        nextLevelId += 1;
+        nextLevelName = $"Level{nextLevelStageID}.{nextLevelId}".Replace(',','.');
         SceneManager.LoadScene(nextLevelName, LoadSceneMode.Single);
     }
 }

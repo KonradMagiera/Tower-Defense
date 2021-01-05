@@ -1429,11 +1429,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1451474726}
         m_MethodName: NextLevel
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1579,6 +1579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c9de7d21617ee42b5c7fc8e1b86496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesAlive: 0
+  waveCounter: 1
+  countdown: 3
+  nextWaveTimer: 10
   gameStartCountdown: 3
   timeTospawnNextWave: 10
   timer: {fileID: 1443196324}
