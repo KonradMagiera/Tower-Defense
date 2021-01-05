@@ -11,8 +11,6 @@ public class Board : MonoBehaviour
     //public GameObject[] enemyPrefabs; // will be used in edit mode
     public GameObject emptyBoardObject;
 
-    //public GameObject buildingSpotPrefab; // for placing turrets
-    //public GameObject notScrpitedPrefab; // empty or road
     public bool isEditMode = false;
     private float size = 2.5f;
 

@@ -38,15 +38,15 @@ public class Player : MonoBehaviour
         healthBarText.text = playerHealth.ToString();
         moneyText.text = playerMoney.ToString();
 
+        if(GameManager.gameManager == null) return;
+
         if(playerHealth <= 0)
         {
-            GameManager.waveCounter = 1;
             GameManager.gameManager.GameLost();
 
         }
-        else if(GameManager.waveCounter == 0 && GameManager.enemiesAlive == 0)
+        else if(GameManager.gameManager.waveCounter == 0 && GameManager.gameManager.enemiesAlive == 0)
         {
-            GameManager.waveCounter = 1;
             GameManager.gameManager.GameWon();
         }
     }

@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
-    public static int enemiesAlive = 0;
-    public static int waveCounter = 1;
-    public static float countdown = 3f;
-    public static float nextWaveTimer = 10f;
+    public int enemiesAlive = 0;
+    public int waveCounter = 1;
+    public float countdown = 3f;
+    public float nextWaveTimer = 10f;
 
 
     [Header("Time Settings")]
@@ -61,8 +61,6 @@ public class GameManager : MonoBehaviour
         levelNumber += 0.1f;
         nextLevelName = $"Level{levelNumber}".Replace(',','.');
         PlayerPrefs.SetString("currentLevel", nextLevelName);
-
-        Debug.Log("WIN");
     }
 
     public void GameLost()
@@ -70,7 +68,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameUI.SetActive(false);
         looseScreen.SetActive(true);
-        Debug.Log("GAME OVER");
     }
 
 }

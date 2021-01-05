@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Player.playerMoney += killingReward;
-        GameManager.enemiesAlive -= 1;
+        GameManager.gameManager.enemiesAlive -= 1;
         Destroy(gameObject);
     }
 }

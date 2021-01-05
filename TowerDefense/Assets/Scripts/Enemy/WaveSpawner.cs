@@ -26,19 +26,17 @@ public class WaveSpawner : MonoBehaviour
         SetPostionAndFindPath();
         // Vector3 newPath is set
 
-        if(GameManager.waveCounter < waves.Length) GameManager.waveCounter = waves.Length;
+        if(GameManager.gameManager.waveCounter < waves.Length) GameManager.gameManager.waveCounter = waves.Length;
 
     }
 
     void Update()
     {
-        if (GameManager.countdown <= 0f)
+        if (GameManager.gameManager.countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
-            //countdown = nextWaveTimer;
             return;
         }
-        //countdown -= Time.deltaTime;
     }
 
     IEnumerator SpawnWave()
@@ -47,14 +45,11 @@ public class WaveSpawner : MonoBehaviour
             this.enabled = false;
             yield break;
         }
-        Wave current = waves[currentWave];
-
-        //Debug.Log(Player.enemiesAlive);
-        
+        Wave current = waves[currentWave];      
 
         foreach (Wave.EnemySettings s in current.enemies)
         {
-            GameManager.enemiesAlive += s.amount;
+            GameManager.gameManager.enemiesAlive += s.amount;
             for (int i = 0; i < s.amount; i++)
             {
                 SpawnEnemy(s.enemyPrefab);
@@ -88,11 +83,6 @@ public class WaveSpawner : MonoBehaviour
         {
             newPath[j] = new Vector3(path[i+1] * size - 5 * size, 0, path[i] * size - 3 * size);
         }
-
-        //for(int i = 0; i < newPath.Length; i++){
-        //    Debug.Log(newPath[i]);
-        //}
-
     }
 
     
