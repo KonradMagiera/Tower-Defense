@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,15 @@ public class BuildManager : MonoBehaviour
     
     public GameObject turret;
     public Image highlither;
-
+    [Header("UI Objects")]
+    public TextMeshProUGUI turretName;
+    public TextMeshProUGUI damage;
+    public TextMeshProUGUI corruption;
+    public TextMeshProUGUI range;
+    public TextMeshProUGUI turnRate;
+    public TextMeshProUGUI attackSpeed;
+    public TextMeshProUGUI bulletSpeed;
+    
     private GameObject selectedTurret;
     private RectTransform buttonPosition;
 
@@ -22,6 +31,7 @@ public class BuildManager : MonoBehaviour
     void Start()
     {
         selectedTurret = turret;
+        SetGuiInfo();
     }
 
     public GameObject GetSelectedTurret()
@@ -35,6 +45,7 @@ public class BuildManager : MonoBehaviour
 
         transform.position = buttonPosition.position;
         selectedTurret = newTurret;
+        SetGuiInfo();
     }
 
     public void SetButtonPosition(RectTransform transform)
@@ -42,4 +53,15 @@ public class BuildManager : MonoBehaviour
         buttonPosition = transform;
     }
 
+    private void SetGuiInfo()
+    {
+        Turret stats = selectedTurret.GetComponent<Turret>();
+        turretName.text =  selectedTurret.name;
+        damage.text = stats.damage.ToString();
+        corruption.text =  stats.corruption.ToString();
+        range.text =  stats.range.ToString();
+        turnRate.text =  stats.turnRate.ToString();
+        attackSpeed.text = stats.attackSpeed.ToString();
+        bulletSpeed.text =  stats.bulletSpeed.ToString();
+    }
 }
