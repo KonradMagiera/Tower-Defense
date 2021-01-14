@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
     public GameObject levelSelector;
     public string unlockedLevel = "Level1.1";
 
-    public void Start()
+    public void Awake()
     {
         if(!PlayerPrefs.HasKey("currentLevel")) PlayerPrefs.SetString("currentLevel", unlockedLevel);
         ManageActive(true, false);

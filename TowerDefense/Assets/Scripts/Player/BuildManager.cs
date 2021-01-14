@@ -21,6 +21,7 @@ public class BuildManager : MonoBehaviour
     
     private GameObject selectedTurret;
     private RectTransform buttonPosition;
+    private GameObject turretToChange;
 
     // Initlialize before BuildingSpot Start executes
     void Awake()
@@ -46,6 +47,26 @@ public class BuildManager : MonoBehaviour
         transform.position = buttonPosition.position;
         selectedTurret = newTurret;
         SetGuiInfo();
+
+        if(turretToChange != null)
+        {
+            Turret tmp = turretToChange.GetComponent<Turret>();
+            tmp.HideUI();
+        }
+    }
+
+    public void SetTurretToChange(GameObject turret)
+    {
+        if(turretToChange != null)
+        {
+            Turret tmp = turretToChange.GetComponent<Turret>();
+            tmp.HideUI();
+        }
+
+        turretToChange = turret;
+        Turret t = turretToChange.GetComponent<Turret>();
+        t.ShowUI();
+        
     }
 
     public void SetButtonPosition(RectTransform transform)

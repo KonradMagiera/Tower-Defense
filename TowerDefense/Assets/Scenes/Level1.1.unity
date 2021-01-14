@@ -8380,6 +8380,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
       propertyPath: waves.Array.data[0].enemy.Array.data[0].enemyPrefab
       value: 
       objectReference: {fileID: 5837887817031459339, guid: 437cc5712b3ee76488eee9e3ac460e0d,
@@ -8446,33 +8451,33 @@ PrefabInstance:
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[0].enemyPrefab
       value: 
-      objectReference: {fileID: 6150567381546285178, guid: a41556148e87fee4b9eb8fa05b899119,
+      objectReference: {fileID: 2216315851362413111, guid: d3a6fad659313a143b2224654c0b6aca,
         type: 3}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[0].amount
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[0].spawnRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[1].enemyPrefab
       value: 
-      objectReference: {fileID: 2216315851362413111, guid: d3a6fad659313a143b2224654c0b6aca,
+      objectReference: {fileID: 6150567381546285178, guid: a41556148e87fee4b9eb8fa05b899119,
         type: 3}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[1].amount
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[1].enemies.Array.data[1].spawnRate
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
@@ -8499,6 +8504,38 @@ PrefabInstance:
     - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
         type: 3}
       propertyPath: waves.Array.data[0].enemies.Array.data[1].spawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].enemyPrefab
+      value: 
+      objectReference: {fileID: 2216315851362413111, guid: d3a6fad659313a143b2224654c0b6aca,
+        type: 3}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].amount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[0].spawnRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[1].enemyPrefab
+      value: 
+      objectReference: {fileID: 6150567381546285178, guid: a41556148e87fee4b9eb8fa05b899119,
+        type: 3}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[1].amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053643210993234290, guid: 489476cf94e26004391a2e8e4cc99f1e,
+        type: 3}
+      propertyPath: waves.Array.data[2].enemies.Array.data[1].spawnRate
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5053643210993234291, guid: 489476cf94e26004391a2e8e4cc99f1e,

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,16 +51,32 @@ public class GameManager : MonoBehaviour
         timerText.text = ((int)countdown).ToString();
     }
 
-    public void GameWon()
+    public void GameWon(int nextLevelStageID)
     {
         Time.timeScale = 0f;
         gameUI.SetActive(false);
         winScreen.SetActive(true);
 
         string nextLevelName = SceneManager.GetActiveScene().name;
-        float levelNumber = float.Parse(nextLevelName.Substring(5).Replace('.',','));
-        levelNumber += 0.1f;
-        nextLevelName = $"Level{levelNumber}".Replace(',','.');
+
+        // float levelNumber = float.Parse(nextLevelName.Substring(5).Replace('.',','));
+        // levelNumber += 0.1f;
+        // nextLevelName = $"Level{levelNumber}".Replace(',','.');
+        
+        int currentID = (int)Math.Floor(float.Parse(nextLevelName.Substring(5).Replace('.',',')));
+        if(currentID < nextLevelStageID)
+        {
+            //int nextLevelId = int.Parse(nextLevelName.Substring(7));
+            //nextLevelId += 1;
+            nextLevelName = $"Level{nextLevelStageID}.1";
+        } 
+        else
+        {
+            int nextLevelId = int.Parse(nextLevelName.Substring(7));
+            nextLevelId += 1;
+            nextLevelName = $"Level{nextLevelStageID}.{nextLevelId}";
+        }
+
         PlayerPrefs.SetString("currentLevel", nextLevelName);
     }
 

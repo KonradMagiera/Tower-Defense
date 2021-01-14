@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
 
     [Header("Setup")]
     public GameObject bulletPrefab;
+    public GameObject dropdownCanvas;
     public Transform bulletSpawnPoint;
     private Transform target;
 
@@ -24,6 +25,7 @@ public class Turret : MonoBehaviour
     {
         attackCountdown = attackSpeed;
         InvokeRepeating("SeekEnemy", 0.0f, 0.5f);
+        HideUI();
     }
 
     void Update()
@@ -64,6 +66,16 @@ public class Turret : MonoBehaviour
             attackCountdown -= Time.deltaTime;
         }
 
+    }
+
+    void OnMouseDown()
+    {
+        BuildManager.buildManager.SetTurretToChange(this.gameObject);
+    }
+
+    public void ChangeSeekType(int value)
+    {
+        seekType = (SeekType)value;
     }
 
     /// <summary>
@@ -325,5 +337,15 @@ public class Turret : MonoBehaviour
     {
         Gizmos.color = new Color(1, 1, 0, 0.75F);
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void HideUI()
+    {
+        dropdownCanvas.SetActive(false);
+    }
+
+    public void ShowUI()
+    {
+        dropdownCanvas.SetActive(true);
     }
 }

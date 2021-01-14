@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [Header("Settings")]
     public float startingHealth = 30f;
     public float startingMoney = 20f;
+    public int nextLevelStageID = 1;
 
     [Header("UI Objects")]
     public TextMeshProUGUI healthBarText;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour
         }
         else if(GameManager.gameManager.waveCounter == 0 && GameManager.gameManager.enemiesAlive == 0)
         {
-            GameManager.gameManager.GameWon();
+            GameManager.gameManager.GameWon(nextLevelStageID);
         }
     }
 
